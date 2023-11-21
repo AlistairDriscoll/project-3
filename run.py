@@ -15,7 +15,6 @@ def menu_page():
         
     return menu_choice
 
-
 def rules_page():
     """
     Function to display the rules
@@ -34,11 +33,11 @@ If you guess the full word before you run out of guesses, you win!
         print("Incorrect input, please select b to go to the game.")
         go_to_menu = input("Select here...")
 
+def which_word():
+    """
+    Function to see which difficulty the user would like to use, then returns a word based on that list
+    """
 
-def game_page():
-    """
-    Function to start the game itself
-    """
 
     # Starts by asking the user for their difficulty rating, with a while loop to make sure they choose a valid option
 
@@ -48,18 +47,53 @@ def game_page():
     while difficulty_choice not in ["1", "2", "3"]:
         print("Incorrect choice, select either 1 for easy difficulty, 2 for intermediate or 3 for hard difficulty")
         difficulty_choice = input("Please select here...")
-        difficulty_choice = int(difficulty_choice)
-        
-    if difficulty_choice == 1:
+
+    
+    # then assigns a list of words depending on difficulty rate chosen and selects a random word from that list to use
+
+    if int(difficulty_choice) == 1:
         word_list = words.easy_words
-    elif difficulty_choice == 2:
+    elif int(difficulty_choice) == 2:
         word_list = words.medium_words
     else:
         word_list = words.hard_words
 
     round_word = random.choice(word_list)
 
+    return round_word
+
+def choose_letter():
+    letter = input("Choose a letter here...")
+    while len(letter) != 1 or ord(letter.upper()) not in range(65, 91):
+        print("Your choice must be in the alphabet and must only be a singular letter!")
+        letter = input("Choose a letter here...")
+
+    return letter
+
+def game_page():
+    """
+    Function to start the game itself
+    The variable declarations are at the top
+    round_word is the word of the round, word_string is what the user will see while they are playing the game
+    The function starts with seven lives
+    """
     
+    lives = 7
+    round_word = which_word()
+    word_string = ""
+    for letters in round_word:
+        word_string += "-"
+    result = f"Your word so far is: {word_string} lives left: {lives}"
+
+
+    print(f"\nLet's begin!\n")
+
+    # loop for if the game has finished, if it hasn't the first thing it does is ask the user for a letter
+    while lives > 0 or "-" not in word_string:
+        letter_choice = choose_letter()
+        if letter_choice not in round_word:
+            lives =- 1
+
 
 
 def main():
@@ -80,8 +114,8 @@ def main():
         menu_choice = menu_page()
 
     print("Thank you for playing hangman!")
-        
-    
+
+
 main()
 
 
