@@ -15,6 +15,7 @@ def menu_page():
         
     return menu_choice
 
+
 def rules_page():
     """
     Function to display the rules
@@ -32,6 +33,7 @@ If you guess the full word before you run out of guesses, you win!
     while go_to_menu.upper() != "B":
         print("Incorrect input, please select b to go to the game.")
         go_to_menu = input("Select here...")
+
 
 def which_word():
     """
@@ -80,6 +82,7 @@ def game_page():
     
     lives = 7
     round_word = which_word()
+    round_word = round_word.upper()
     word_string = ""
     for letters in round_word:
         word_string += "-"
@@ -88,13 +91,26 @@ def game_page():
 
     print(f"\nLet's begin!\n")
 
+    print(round_word)
+    print(word_string)
+    
     # loop for if the game has finished, if it hasn't the first thing it does is ask the user for a letter
     while lives > 0 or "-" not in word_string:
         letter_choice = choose_letter()
+        letter_choice = letter_choice.upper()
         if letter_choice not in round_word:
-            lives =- 1
+            lives -= 1
+        else:
+            for letter in range(0, len(round_word)):
+                if round_word[letter] == letter_choice:
+                    word_string[letter] = letter_choice
 
-
+    
+                
+        
+    print(letter_choice)
+    print(word_string)
+                    
 
 def main():
     """
