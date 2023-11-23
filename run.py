@@ -76,40 +76,35 @@ def game_page():
     """
     Function to start the game itself
     The variable declarations are at the top
-    round_word is the word of the round, word_string is what the user will see while they are playing the game
+    round_word is the word of the round, char_list is what the user will see while they are playing the game
     The function starts with seven lives
     """
     
     lives = 7
     round_word = which_word()
-    round_word = round_word.upper()
     word_string = ""
+    char_list = []
     for letters in round_word:
-        word_string += "-"
-    result = f"Your word so far is: {word_string} lives left: {lives}"
+        char_list.append("-")
+    result = f"Your word so far is: {char_list} lives left: {lives}"
 
 
     print(f"\nLet's begin!\n")
 
     print(round_word)
-    print(word_string)
+    print(char_list)
     
     # loop for if the game has finished, if it hasn't the first thing it does is ask the user for a letter
-    while lives > 0 or "-" not in word_string:
+    while lives > 0 and "-" in char_list:
         letter_choice = choose_letter()
-        letter_choice = letter_choice.upper()
+        letter_choice = letter_choice.lower()
         if letter_choice not in round_word:
             lives -= 1
         else:
             for letter in range(0, len(round_word)):
                 if round_word[letter] == letter_choice:
-                    word_string[letter] = letter_choice
+                    char_list[letter] = letter_choice
 
-    
-                
-        
-    print(letter_choice)
-    print(word_string)
                     
 
 def main():
