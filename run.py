@@ -64,48 +64,69 @@ def which_word():
 
     return round_word
 
-def choose_letter():
+def choose_letter(chosen_letters):
     letter = input("Choose a letter here...")
-    while len(letter) != 1 or ord(letter.upper()) not in range(65, 91):
-        print("Your choice must be in the alphabet and must only be a singular letter!")
+    while len(letter) != 1 or ord(letter.upper()) not in range(65, 91) or letter in chosen_letters:
+        if letter in chosen_letters:
+            print(f"You have already chosen {letter}!")
+        print("Your choice must be in the alphabet and must only be a singular letter, and please choose a new letter each time!")
         letter = input("Choose a letter here...")
 
     return letter
+
+def word_string_func(char_list):
+    word = ""
+    for letters in char_list:
+        word += letters
+        
+    return word
+
 
 def game_page():
     """
     Function to start the game itself
     The variable declarations are at the top
-    round_word is the word of the round, char_list is what the user will see while they are playing the game
+    round_word is the word of the round, char_list is the list of the guessed and unguessed letters, the unguessed ones being hyphons
+    word_string is the list of guessed and unguessed letters put together as a word to display to the user
     The function starts with seven lives
     """
     
     lives = 7
+    chosen_letters = []
     round_word = which_word()
     word_string = ""
     char_list = []
+    string = "hello"
     for letters in round_word:
         char_list.append("-")
-    result = f"Your word so far is: {char_list} lives left: {lives}"
+    
 
-
+    
     print(f"\nLet's begin!\n")
+    word_string = word_string_func(char_list)
 
-    print(round_word)
-    print(char_list)
     
     # loop for if the game has finished, if it hasn't the first thing it does is ask the user for a letter
     while lives > 0 and "-" in char_list:
-        letter_choice = choose_letter()
+        print(f"Your word so far is {word_string}, lives left: {lives}")
+        letter_choice = choose_letter(chosen_letters)
         letter_choice = letter_choice.lower()
+        chosen_letters.append(letter_choice)
         if letter_choice not in round_word:
+            
             lives -= 1
         else:
             for letter in range(0, len(round_word)):
                 if round_word[letter] == letter_choice:
                     char_list[letter] = letter_choice
+                    word_string = word_string_func(char_list)
+                    print(word_string)
 
-                    
+    if lives > 0:
+        print(f"Congratulations, you have won! The word was {round_word}")
+    else:
+        print(f"Oh no! You lost! the word was {round_word}")
+                
 
 def main():
     """

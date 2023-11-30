@@ -172,3 +172,9 @@ hard_words = [
     'venerable',
     'quintissential'
     ]
+
+lives_displays = [
+    """
+
+"""
+]
