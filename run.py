@@ -17,9 +17,7 @@ def menu_page():
 
 
 def rules_page():
-    """
-    Function to display the rules
-    """
+    """ Function to display the rules """
 
     print("""
 Hangman is a game of guessing.
@@ -28,7 +26,7 @@ At first you will not know any of the letters and will have to guess what they a
 Make sure to choose carefully as you will only have seven guesses until you lose the game!
 If you guess the full word before you run out of guesses, you win!
 """)
-    
+
     go_to_menu = input("Press b to go back to the menu page...")
     while go_to_menu.upper() != "B":
         print("Incorrect input, please select b to go to the game.")
@@ -37,7 +35,8 @@ If you guess the full word before you run out of guesses, you win!
 
 def which_word():
     """
-    Function to see which difficulty the user would like to use, then returns a word based on that list
+    Function to see which difficulty the user would like to use,
+    then returns a word based on that list
     """
 
 
@@ -86,8 +85,10 @@ def game_page():
     """
     Function to start the game itself
     The variable declarations are at the top
-    round_word is the word of the round, char_list is the list of the guessed and unguessed letters, the unguessed ones being hyphons
-    word_string is the list of guessed and unguessed letters put together as a word to display to the user
+    round_word is the word of the round, char_list is the list of the guessed
+    and unguessed letters, the unguessed ones being hyphons
+    word_string is the list of guessed and unguessed letters put together as a
+    word to display to the user
     The function starts with seven lives
     """
     
@@ -96,7 +97,7 @@ def game_page():
     round_word = which_word()
     word_string = ""
     char_list = []
-    string = "hello"
+    
     for letters in round_word:
         char_list.append("-")
     
@@ -148,6 +149,7 @@ def main():
     print("Thank you for playing hangman!")
 
 
-main()
+if __name__ == "__main__":
+    main()
 
 

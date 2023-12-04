@@ -109,6 +109,7 @@ medium_words = [
     'yearning',
     'zenith',
 ]
+
 hard_words = [
     'cacophony',
     'ebullient',
@@ -175,6 +176,6 @@ hard_words = [
 
 lives_displays = [
     """
-
+______________
 """
 ]
