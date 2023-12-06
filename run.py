@@ -46,8 +46,9 @@ def rules_page():
 
     os.system("clear")
     print("""
-        THE RULES:
-        
+
+THE RULES:
+
 Hangman is a game of guessing.
 You can choose a difficulty rating and you will be given an easier or harder
 word to guess depending on what you have chosen.
@@ -223,8 +224,8 @@ def main():
             print("Your chose to start the game!")
             game_page()
 
-        go_home_func()
-        menu_choice = menu_page()
+    go_home_func()
+    menu_choice = menu_page()
 
     print("Thank you for playing hangman!")
 
