@@ -87,7 +87,7 @@ Then press Enter!
     difficulty_choice = input("Please select here...\n")
 
     while difficulty_choice not in ["1", "2", "3"]:
-        system.os("clear")
+        os.system("clear")
         print("""
 Incorrect choice!
 
