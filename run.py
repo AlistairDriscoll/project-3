@@ -43,7 +43,7 @@ Then press Enter!
 def rules_page():
     """ Function to display the rules """
 
-    os.system("cls")
+    os.system("clear")
     print("""
 Hangman is a game of guessing.
 You can choose a difficulty rating and you will be given an easier or harder
@@ -73,7 +73,7 @@ def which_word():
     with a while loop to make sure they choose a valid option
     """
 
-    os.system("cls")
+    os.system("clear")
     print("""
 To start, select a difficulty rating!
 
@@ -87,7 +87,7 @@ Then press Enter!
     difficulty_choice = input("Please select here...\n")
 
     while difficulty_choice not in ["1", "2", "3"]:
-        system.os("cls")
+        system.os("clear")
         print("""
 Incorrect choice!
 
@@ -121,7 +121,7 @@ Then press Enter
 def choose_letter(chosen_letters):
     letter = input("Choose a letter here...\n")
     while len(letter) != 1 or ord(letter.upper()) not in range(65, 91) or letter in chosen_letters:
-        os.system("cls")
+        os.system("clear")
         if letter in chosen_letters:
             print(f"You have already chosen {letter}! Please pick a new letter")
             letter = input("Choose a letter here...\n")
@@ -162,7 +162,7 @@ def game_page():
         char_list.append("-")
     
 
-    os.system("cls")
+    os.system("clear")
     print("Let's begin!")
     word_string = word_string_func(char_list)
 
