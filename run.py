@@ -24,6 +24,7 @@ Then press Enter!
     menu_choice = input("Choose an option here...\n")
 
     while menu_choice not in ["1", "2", "3"]:
+        os.system("clear")
         print("""
 Incorrect choice!
 
@@ -45,6 +46,8 @@ def rules_page():
 
     os.system("clear")
     print("""
+        THE RULES:
+        
 Hangman is a game of guessing.
 You can choose a difficulty rating and you will be given an easier or harder
 word to guess depending on what you have chosen.
@@ -57,7 +60,8 @@ If you guess the full word before you run out of guesses, you win!
 
     go_to_menu = input("Press b to go back to the menu page...\n")
     while go_to_menu.upper() != "B":
-        print("Incorrect input, please select b to go to the game.")
+        os.system("clear")
+        print("Incorrect input, please select b to go back to the menu.")
         go_to_menu = input("Select here...\n")
 
 
@@ -140,6 +144,18 @@ def word_string_func(char_list):
         
     return word
 
+def go_home_func():
+    print("""
+Thank you for playing hangman! Please press H to go back to the home page.
+""")
+    back_home = input("Enter here...\n")
+
+    while back_home.upper != "H":
+        os.system("clear")
+        print("""
+Incorrect choice, please press H to go back to the home page.
+""")
+        back_home = input("Enter here...\n")
 
 def game_page():
     """
@@ -178,7 +194,6 @@ def game_page():
         letter_choice = letter_choice.lower()
         chosen_letters.append(letter_choice)
         if letter_choice not in round_word:
-            
             lives -= 1
         else:
             for letter in range(0, len(round_word)):
@@ -191,7 +206,7 @@ def game_page():
         print(f"Congratulations, you have won! The word was {round_word}")
     else:
         print(f"Oh no! You lost! the word was {round_word}")
-                
+
 
 def main():
     """
@@ -204,11 +219,11 @@ def main():
         if int(menu_choice) == 1:
             print("You chose to see the rules!")
             rules_page()
-            
         elif int(menu_choice) == 2:
             print("Your chose to start the game!")
             game_page()
-        
+
+        go_home_func()
         menu_choice = menu_page()
 
     print("Thank you for playing hangman!")
