@@ -59,8 +59,7 @@ easy_words = [
     'irony',
     'joust',
     'khaki',
-    'nylon',
-]
+    'nylon',]
 
 medium_words = [
     'balance',
@@ -88,9 +87,7 @@ medium_words = [
     'zeppelin',
     'ambiance',
     'blissful',
-    'convey',
     'dazzle',
-    'felicity',
     'glisten',
     'hurdle',
     'ignite',
@@ -107,8 +104,7 @@ medium_words = [
     'vortex',
     'wanderlust',
     'yearning',
-    'zenith',
-]
+    'zenith',]
 
 hard_words = [
     'cacophony',
