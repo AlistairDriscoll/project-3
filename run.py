@@ -44,9 +44,7 @@ Then press Enter!
 def rules_page():
     """ Function to display the rules """
 
-    os.system("clear")
     print("""
-
 THE RULES:
 
 Hangman is a game of guessing.
@@ -61,8 +59,9 @@ If you guess the full word before you run out of guesses, you win!
 
     go_to_menu = input("Press b to go back to the menu page...\n")
     while go_to_menu.upper() != "B":
-        os.system("clear")
-        print("Incorrect input, please select b to go back to the menu.")
+        print("""
+Incorrect input, please select b to go back to the menu.
+""")
         go_to_menu = input("Select here...\n")
 
 
@@ -78,7 +77,6 @@ def which_word():
     with a while loop to make sure they choose a valid option
     """
 
-    os.system("clear")
     print("""
 To start, select a difficulty rating!
 
@@ -92,7 +90,6 @@ Then press Enter!
     difficulty_choice = input("Please select here...\n")
 
     while difficulty_choice not in ["1", "2", "3"]:
-        os.system("clear")
         print("""
 Incorrect choice!
 
@@ -145,19 +142,6 @@ def word_string_func(char_list):
         
     return word
 
-def go_home_func():
-    print("""
-Thank you for playing hangman! Please press H to go back to the home page.
-""")
-    back_home = input("Enter here...\n")
-
-    while back_home.upper != "H":
-        os.system("clear")
-        print("""
-Incorrect choice, please press H to go back to the home page.
-""")
-        back_home = input("Enter here...\n")
-
 def game_page():
     """
     Function to start the game itself
@@ -178,8 +162,6 @@ def game_page():
     for letters in round_word:
         char_list.append("-")
     
-
-    os.system("clear")
     print("Let's begin!")
     word_string = word_string_func(char_list)
 
@@ -223,11 +205,20 @@ def main():
         elif int(menu_choice) == 2:
             print("Your chose to start the game!")
             game_page()
+            print("""
+Thank you for playing hangman! Please press H to go back to the home page.
+""")
+            back_home = input("Enter here...\n")
 
-    go_home_func()
-    menu_choice = menu_page()
+            while back_home.upper() != "H":
+                print("""
+Incorrect choice, please press H to go back to the home page.
+""")
+                back_home = input("Enter here...\n")
 
-    print("Thank you for playing hangman!")
+        menu_choice = menu_page()
+
+    print("Thank you for playing hangman! See you next time!")
 
 
 if __name__ == "__main__":
