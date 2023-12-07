@@ -11,8 +11,7 @@ def menu_page():
     once the game ends it will return to this bit
     """
 
-    print(f"""
-Welcome to Hangman!
+    print(f"""Welcome to Hangman!
 
 Please press:
 
@@ -26,8 +25,7 @@ Then press Enter!
 
     while menu_choice not in ["1", "2", "3"]:
         os.system("clear")
-        print("""
-Incorrect choice!
+        print("""Incorrect choice!
 
 Please press:
 
@@ -80,8 +78,7 @@ def which_word():
     with a while loop to make sure they choose a valid option
     """
 
-    print("""
-To start, select a difficulty rating!
+    print("""To start, select a difficulty rating!
 
 1 is for easy mode
 2 is for intermediate
@@ -94,8 +91,7 @@ Then press Enter!
 
     while difficulty_choice not in ["1", "2", "3"]:
         os.system("clear")
-        print("""
-Incorrect choice!
+        print("""Incorrect choice!
 
 Select either:
 
@@ -116,17 +112,17 @@ Then press Enter
 
     if int(difficulty_choice) == 1:
         word_list = words.easy_words
-        print("You chose easy mode!\n")
+        mode = "easy"
     elif int(difficulty_choice) == 2:
         word_list = words.medium_words
-        ("You chose intermediate mode!\n")
+        mode = "intermediate"
     else:
         word_list = words.hard_words
-        print("You chose hard mode!\n")
+        mode = "hard"
 
     round_word = random.choice(word_list)
 
-    return round_word
+    return round_word, mode
 
 
 def choose_letter(chosen_letters, word_string, lives):
@@ -175,14 +171,14 @@ def game_page():
 
     lives = 7
     chosen_letters = []
-    round_word = which_word()
+    round_word, mode = which_word()
     word_string = ""
     char_list = []
 
     for letters in round_word:
         char_list.append("-")
 
-    print("Let's begin!")
+    print(f"You chose {mode} mode! Let's begin!")
     word_string = word_string_func(char_list)
 
     """
@@ -191,7 +187,10 @@ def game_page():
     """
 
     while lives > 0 and "-" in char_list:
-        print(f"Your word so far is {word_string}, lives left: {lives}")
+        print(f"""
+Your word so far is {word_string}, lives left: {lives}
+""")
+
         letter_choice = choose_letter(chosen_letters, word_string, lives)
         letter_choice = letter_choice.lower()
         chosen_letters.append(letter_choice)
