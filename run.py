@@ -123,7 +123,6 @@ Then press Enter
 def choose_letter(chosen_letters):
     letter = input("Choose a letter here...\n")
     while len(letter) != 1 or ord(letter.upper()) not in range(65, 91) or letter in chosen_letters:
-        os.system("clear")
         if letter in chosen_letters:
             print(f"You have already chosen {letter}! Please pick a new letter")
             letter = input("Choose a letter here...\n")
@@ -183,7 +182,6 @@ def game_page():
                 if round_word[letter] == letter_choice:
                     char_list[letter] = letter_choice
                     word_string = word_string_func(char_list)
-                    print(word_string)
 
     if lives > 0:
         print(f"Congratulations, you have won! The word was {round_word}")
@@ -218,7 +216,9 @@ Incorrect choice, please press H to go back to the home page.
 
         menu_choice = menu_page()
 
-    print("Thank you for playing hangman! See you next time!")
+    print("""
+Thank you for playing hangman! See you next time!
+""")
 
 
 if __name__ == "__main__":
