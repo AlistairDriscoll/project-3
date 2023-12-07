@@ -2,6 +2,7 @@ import words
 import random
 import os
 
+#TODO add lives icons, display of hangman stages, change lives amount, colours
 
 def menu_page():
     """
