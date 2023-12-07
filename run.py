@@ -116,10 +116,13 @@ Then press Enter
 
     if int(difficulty_choice) == 1:
         word_list = words.easy_words
+        print("You chose easy mode!\n")
     elif int(difficulty_choice) == 2:
         word_list = words.medium_words
+        ("You chose intermediate mode!\n")
     else:
         word_list = words.hard_words
+        print("You chose hard mode!\n")
 
     round_word = random.choice(word_list)
 
@@ -147,9 +150,7 @@ Your word so far is {word_string}. Lives: {lives}.
 
     os.system("clear")
 
-    print(f"""
-You have chosen {letter}!
-""")
+    print(f"You have chosen {letter}!")
     return letter
 
 
@@ -241,6 +242,8 @@ Thank you for playing hangman! Please press H to go back to the home page.
 Incorrect choice, please press H to go back to the home page.
 """)
                 back_home = input("Enter here...\n")
+
+        os.system("clear")
 
         menu_choice = menu_page()
 
