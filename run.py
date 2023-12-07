@@ -196,8 +196,8 @@ lives left: {lives}
         chosen_letters.append(letter_choice)
         if letter_choice not in round_word:
             lives -= 1
-            print(f"""Oh no!
-{letter_choice} was not in the word! You have {lives} lives left.
+            print(f"""
+Oh no! {letter_choice} was not in the word! You have {lives} lives left.
 """)
         else:
             for letter in range(0, len(round_word)):
@@ -231,8 +231,7 @@ def main():
         elif int(menu_choice) == 2:
             print("Your chose to start the game!")
             game_page()
-            print("""You chose to exit!
-
+            print("""
 Thank you for playing hangman! Please press H to go back to the home page.
 """)
             back_home = input("Enter here...\n")
@@ -248,7 +247,8 @@ Incorrect choice, please press H to go back to the home page.
 
         menu_choice = menu_page()
 
-    print("""
+    print("""You chose to exit!
+
 Thank you for playing hangman! See you next time!
 """)
 
