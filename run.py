@@ -39,6 +39,7 @@ Then press Enter!
 """)
         menu_choice = input("Choose an option here...\n")
 
+    os.system("clear")
     return menu_choice
 
 
@@ -65,6 +66,8 @@ Incorrect input, please select b to go back to the menu.
 """)
         go_to_menu = input("Select here...\n")
 
+    os.system("clear")
+
 
 def which_word():
     """
@@ -90,6 +93,7 @@ Then press Enter!
     difficulty_choice = input("Please select here...\n")
 
     while difficulty_choice not in ["1", "2", "3"]:
+        os.system("clear")
         print("""
 Incorrect choice!
 
@@ -108,6 +112,8 @@ Then press Enter
     and selects a random word from that list to use
     """
 
+    os.system("clear")
+
     if int(difficulty_choice) == 1:
         word_list = words.easy_words
     elif int(difficulty_choice) == 2:
@@ -120,18 +126,30 @@ Then press Enter
     return round_word
 
 
-def choose_letter(chosen_letters):
+def choose_letter(chosen_letters, word_string, lives):
     letter = input("Choose a letter here...\n")
     while len(letter) != 1 or ord(letter.upper()) not in range(65, 91) or letter in chosen_letters:
+        os.system("clear")
         if letter in chosen_letters:
-            print(f"You have already chosen {letter}! Please pick a new letter")
+            print(f"""
+You have already chosen {letter}! Please pick a new letter.
+
+Your word so far is {word_string}. Lives: {lives}.
+""")
             letter = input("Choose a letter here...\n")
         else:
             print("""
 Your choice must be in the alphabet and must only be a singular letter!
+
+Your word so far is {word_string}. Lives: {lives}.
 """)
             letter = input("Choose a letter here...\n")
 
+    os.system("clear")
+
+    print(f"""
+You have chosen {letter}!
+""")
     return letter
 
 
@@ -173,21 +191,30 @@ def game_page():
 
     while lives > 0 and "-" in char_list:
         print(f"Your word so far is {word_string}, lives left: {lives}")
-        letter_choice = choose_letter(chosen_letters)
+        letter_choice = choose_letter(chosen_letters, word_string, lives)
         letter_choice = letter_choice.lower()
         chosen_letters.append(letter_choice)
         if letter_choice not in round_word:
             lives -= 1
+            print(f"""
+Oh no! {letter_choice} was not in the word! You have {lives} lives left.
+""")
         else:
             for letter in range(0, len(round_word)):
                 if round_word[letter] == letter_choice:
                     char_list[letter] = letter_choice
                     word_string = word_string_func(char_list)
+                    print(f"""
+Well done! {letter_choice} was in the word! Your word is now {word_string}.
+Lives left: {lives}. Keep it up!
+""")
+
+    os.system("clear")
 
     if lives > 0:
-        print(f"Congratulations, you have won! The word was {round_word}")
+        print(f"Congratulations, you have won! The word was {round_word}!")
     else:
-        print(f"Oh no! You lost! the word was {round_word}")
+        print(f"Oh no! You lost! the word was {round_word}!")
 
 
 def main():
