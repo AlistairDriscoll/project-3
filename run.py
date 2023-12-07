@@ -2,14 +2,15 @@ import words
 import random
 import os
 
+
 def menu_page():
     """
     Function that shows:
     the menu, the first part user will see when they start the game
-    
+
     once the game ends it will return to this bit
     """
-    
+
     print(f"""
 Welcome to Hangman!
 
@@ -37,7 +38,7 @@ Please press:
 Then press Enter!
 """)
         menu_choice = input("Choose an option here...\n")
-        
+
     return menu_choice
 
 
@@ -71,7 +72,6 @@ def which_word():
     then returns a word based on that list
     """
 
-
     """
     Starts by asking the user for their difficulty rating
     with a while loop to make sure they choose a valid option
@@ -103,7 +103,6 @@ Then press Enter
 """)
         difficulty_choice = input("Please select here...\n")
 
-    
     """
     Then assigns a list of words depending on difficulty rate chosen
     and selects a random word from that list to use
@@ -120,6 +119,7 @@ Then press Enter
 
     return round_word
 
+
 def choose_letter(chosen_letters):
     letter = input("Choose a letter here...\n")
     while len(letter) != 1 or ord(letter.upper()) not in range(65, 91) or letter in chosen_letters:
@@ -134,12 +134,14 @@ Your choice must be in the alphabet and must only be a singular letter!
 
     return letter
 
+
 def word_string_func(char_list):
     word = ""
     for letters in char_list:
         word += letters
-        
+
     return word
+
 
 def game_page():
     """
@@ -151,20 +153,19 @@ def game_page():
     word to display to the user
     The function starts with seven lives
     """
-    
+
     lives = 7
     chosen_letters = []
     round_word = which_word()
     word_string = ""
     char_list = []
-    
+
     for letters in round_word:
         char_list.append("-")
-    
+
     print("Let's begin!")
     word_string = word_string_func(char_list)
 
-    
     """
     loop for if the game has finished,
     if it hasn't the first thing it does is ask the user for a letter
@@ -223,5 +224,3 @@ Thank you for playing hangman! See you next time!
 
 if __name__ == "__main__":
     main()
-
-
