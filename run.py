@@ -159,6 +159,20 @@ def word_string_func(char_list):
     return word
 
 
+def return_home_func():
+    print("""
+Thank you for playing hangman! Please press H to go back to the home page.
+""")
+    back_home = input("Enter here...\n")
+
+    while back_home.upper() != "H":
+        print("""You didn't select H!
+
+Incorrect choice, please press H to go back to the home page.
+""")
+        back_home = input("Enter here...\n")
+
+
 def game_page():
     """
     Function to start the game itself
@@ -232,17 +246,7 @@ def main():
         elif int(menu_choice) == 2:
             print("Your chose to start the game!")
             game_page()
-            print("""
-Thank you for playing hangman! Please press H to go back to the home page.
-""")
-            back_home = input("Enter here...\n")
-
-            while back_home.upper() != "H":
-                print("""You didn't select H!
-
-Incorrect choice, please press H to go back to the home page.
-""")
-                back_home = input("Enter here...\n")
+            return_home_func()
 
         os.system("clear")
 
