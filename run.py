@@ -141,7 +141,7 @@ Your word so far is {word_string}. Lives: {lives}.
 """)
             letter = input("Choose a letter here...\n")
         else:
-            print("""
+            print(f"""
 Your choice must be in the alphabet and must only be a singular letter!
 
 Your word so far is {word_string}. Lives: {lives}.
