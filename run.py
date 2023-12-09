@@ -2,7 +2,8 @@ import words
 import random
 import os
 
-#TODO add lives icons, display of hangman stages, change lives amount, colours
+# TODO add lives icons, display of hangman stages, colours
+
 
 def menu_page():
     """
@@ -128,7 +129,9 @@ Then press Enter
 
 def choose_letter(chosen_letters, word_string, lives):
     letter = input("Choose a letter here...\n")
-    while len(letter) != 1 or ord(letter.upper()) not in range(65, 91) or letter in chosen_letters:
+    while len(letter) != 1 or ord(
+        letter.upper()
+    ) not in range(65, 91) or letter in chosen_letters:
         os.system("clear")
         if letter in chosen_letters:
             print(f"""
