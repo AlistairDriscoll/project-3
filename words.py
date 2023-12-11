@@ -1,6 +1,4 @@
-"""
-The word lists depending on difficulty
-"""
+""" The word lists depending on difficulty """
 
 easy_words = [
     'apple',

@@ -1,6 +1,8 @@
 import words
 import random
 import os
+from colorama import Fore
+
 
 # TODO add lives icons, display of hangman stages, colours
 
@@ -13,7 +15,8 @@ def menu_page():
     once the game ends it will return to this bit
     """
 
-    print(f"""Welcome to Hangman!
+    print(
+        f"""Welcome to Hangman!
 
 Please press:
 
@@ -22,12 +25,14 @@ Please press:
 3 - to exit the game.
 
 Then press Enter!
-    """)
+    """
+    )
     menu_choice = input("Choose an option here...\n")
 
     while menu_choice not in ["1", "2", "3"]:
         os.system("clear")
-        print("""Incorrect choice!
+        print(
+            """Incorrect choice!
 
 Please press:
 
@@ -36,7 +41,8 @@ Please press:
 3 - to exit the game.
 
 Then press Enter!
-""")
+"""
+        )
         menu_choice = input("Choose an option here...\n")
 
     os.system("clear")
@@ -44,9 +50,10 @@ Then press Enter!
 
 
 def rules_page():
-    """ Function to display the rules """
+    """Function to display the rules"""
 
-    print("""
+    print(
+        """
 THE RULES:
 
 Hangman is a game of guessing.
@@ -57,13 +64,16 @@ and will have to guess what they are.
 Make sure to choose carefully as you will only have
 seven guesses until you lose the game!
 If you guess the full word before you run out of guesses, you win!
-""")
+"""
+    )
 
     go_to_menu = input("Press b to go back to the menu page...\n")
     while go_to_menu.upper() != "B":
-        print("""
+        print(
+            """
 Incorrect input, please select b to go back to the menu.
-""")
+"""
+        )
         go_to_menu = input("Select here...\n")
 
     os.system("clear")
@@ -80,7 +90,8 @@ def which_word():
     with a while loop to make sure they choose a valid option
     """
 
-    print("""To start, select a difficulty rating!
+    print(
+        """To start, select a difficulty rating!
 
 1 is for easy mode
 2 is for intermediate
@@ -88,12 +99,14 @@ def which_word():
 
 Then press Enter!
 
-""")
+"""
+    )
     difficulty_choice = input("Please select here...\n")
 
     while difficulty_choice not in ["1", "2", "3"]:
         os.system("clear")
-        print("""Incorrect choice!
+        print(
+            """Incorrect choice!
 
 Select either:
 
@@ -101,8 +114,9 @@ Select either:
 2 for intermediate or
 3 for hard difficulty
 
-Then press Enter
-""")
+Then press Enter!
+"""
+        )
         difficulty_choice = input("Please select here...\n")
 
     """
@@ -129,23 +143,29 @@ Then press Enter
 
 def choose_letter(chosen_letters, word_string, lives):
     letter = input("Choose a letter here...\n")
-    while len(letter) != 1 or ord(
-        letter.upper()
-    ) not in range(65, 91) or letter in chosen_letters:
+    while (
+        len(letter) != 1
+        or ord(letter.upper()) not in range(65, 91)
+        or letter in chosen_letters
+    ):
         os.system("clear")
         if letter in chosen_letters:
-            print(f"""
+            print(
+                f"""
 You have already chosen {letter}! Please pick a new letter.
 
 Your word so far is {word_string}. Lives: {lives}.
-""")
+"""
+            )
             letter = input("Choose a letter here...\n")
         else:
-            print(f"""
+            print(
+                f"""
 Your choice must be in the alphabet and must only be a singular letter!
 
 Your word so far is {word_string}. Lives: {lives}.
-""")
+"""
+            )
             letter = input("Choose a letter here...\n")
 
     os.system("clear")
@@ -163,16 +183,20 @@ def word_string_func(char_list):
 
 
 def return_home_func():
-    print("""
+    print(
+        """
 Thank you for playing hangman! Please press H to go back to the home page.
-""")
+"""
+    )
     back_home = input("Enter here...\n")
 
     while back_home.upper() != "H":
-        print("""You didn't select H!
+        print(
+            """You didn't select H!
 
 Incorrect choice, please press H to go back to the home page.
-""")
+"""
+        )
         back_home = input("Enter here...\n")
 
 
@@ -205,27 +229,33 @@ def game_page():
     """
 
     while lives > 0 and "-" in char_list:
-        print(f"""Your word so far is {word_string}
+        print(
+            f"""Your word so far is {word_string}
 lives left: {lives}
-""")
+"""
+        )
 
         letter_choice = choose_letter(chosen_letters, word_string, lives)
         letter_choice = letter_choice.lower()
         chosen_letters.append(letter_choice)
         if letter_choice not in round_word:
             lives -= 1
-            print(f"""
+            print(
+                f"""
 Oh no! {letter_choice} was not in the word! You have {lives} lives left.
-""")
+"""
+            )
         else:
             for letter in range(0, len(round_word)):
                 if round_word[letter] == letter_choice:
                     char_list[letter] = letter_choice
                     word_string = word_string_func(char_list)
-                    print(f"""
+                    print(
+                        f"""
 Well done! {letter_choice} was in the word! Your word is now {word_string}.
 Lives left: {lives}. Keep it up!
-""")
+"""
+                    )
 
     os.system("clear")
 
@@ -255,10 +285,12 @@ def main():
 
         menu_choice = menu_page()
 
-    print("""You chose to exit!
+    print(
+        """You chose to exit!
 
 Thank you for playing hangman! See you next time!
-""")
+"""
+    )
 
 
 if __name__ == "__main__":
