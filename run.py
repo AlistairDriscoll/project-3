@@ -4,9 +4,6 @@ import os
 from colorama import Fore
 
 
-# TODO add lives icons, display of hangman stages, colours
-
-
 def menu_page():
     """
     Function that shows:
@@ -91,11 +88,11 @@ def which_word():
     """
 
     print(
-        """To start, select a difficulty rating!
+        f"""To start, select a difficulty rating!
 
-1 is for easy mode
-2 is for intermediate
-3 is for hard mode.
+{Fore.GREEN}1 is for easy mode
+{Fore.YELLOW}2 is for intermediate
+{Fore.RED}3 is for hard mode.{Fore.WHITE}
 
 Then press Enter!
 
@@ -106,13 +103,13 @@ Then press Enter!
     while difficulty_choice not in ["1", "2", "3"]:
         os.system("clear")
         print(
-            """Incorrect choice!
+            f"""Incorrect choice!
 
 Select either:
 
-1 for easy difficulty
-2 for intermediate or
-3 for hard difficulty
+{Fore.GREEN}1 for easy difficulty
+{Fore.YELLOW}2 for intermediate or
+{Fore.RED}3 for hard difficulty.{Fore.WHITE}
 
 Then press Enter!
 """
@@ -128,13 +125,13 @@ Then press Enter!
 
     if int(difficulty_choice) == 1:
         word_list = words.easy_words
-        mode = "easy"
+        mode = f"{Fore.GREEN}easy{Fore.WHITE}"
     elif int(difficulty_choice) == 2:
         word_list = words.medium_words
-        mode = "intermediate"
+        mode = f"{Fore.YELLOW}intermediate{Fore.WHITE}"
     else:
         word_list = words.hard_words
-        mode = "hard"
+        mode = f"{Fore.RED}hard{Fore.WHITE}"
 
     round_word = random.choice(word_list)
 
@@ -152,18 +149,18 @@ def choose_letter(chosen_letters, word_string, lives):
         if letter in chosen_letters:
             print(
                 f"""
-You have already chosen {letter}! Please pick a new letter.
+{Fore.YELLOW}You have already chosen {letter}! Please pick a new letter.
 
-Your word so far is {word_string}. Lives: {lives}.
+{Fore.WHITE}Your word so far is {word_string}. Lives: {lives}.
 """
             )
             letter = input("Choose a letter here...\n")
         else:
             print(
-                f"""
+                f"""{Fore.YELLOW}
 Your choice must be in the alphabet and must only be a singular letter!
 
-Your word so far is {word_string}. Lives: {lives}.
+Your word so far is {word_string}. Lives: {lives}.{Fore.WHITE}
 """
             )
             letter = input("Choose a letter here...\n")
@@ -192,9 +189,9 @@ Thank you for playing hangman! Please press H to go back to the home page.
 
     while back_home.upper() != "H":
         print(
-            """You didn't select H!
+            f"""{Fore.YELLOW}You didn't select H!
 
-Incorrect choice, please press H to go back to the home page.
+Incorrect choice, please press H to go back to the home page.{Fore.WHITE}
 """
         )
         back_home = input("Enter here...\n")
@@ -241,9 +238,9 @@ lives left: {lives}
         if letter_choice not in round_word:
             lives -= 1
             print(
-                f"""
+                f"""{Fore.RED}
 Oh no! {letter_choice} was not in the word! You have {lives} lives left.
-"""
+{Fore.WHITE}"""
             )
         else:
             for letter in range(0, len(round_word)):
@@ -251,18 +248,24 @@ Oh no! {letter_choice} was not in the word! You have {lives} lives left.
                     char_list[letter] = letter_choice
                     word_string = word_string_func(char_list)
                     print(
-                        f"""
+                        f"""{Fore.GREEN}
 Well done! {letter_choice} was in the word! Your word is now {word_string}.
-Lives left: {lives}. Keep it up!
+Lives left: {lives}. Keep it up!{Fore.WHITE}
 """
                     )
 
     os.system("clear")
 
     if lives > 0:
-        print(f"Congratulations, you have won! The word was {round_word}!")
+        print(
+            f"""{Fore.GREEN}
+Congratulations, you have won! The word was {round_word}!{Fore.WHITE}
+""")
     else:
-        print(f"Oh no! You lost! the word was {round_word}!")
+        print(
+            f"""{Fore.RED}
+Oh no! You lost! the word was {round_word}!{Fore.WHITE}
+""")
 
 
 def main():
