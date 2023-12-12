@@ -2,12 +2,12 @@
 
 ## Deployment
 
-- Talk about heroku, 
+- The app is deployed online on a website called Heroku, it can be accessed with this link.
 
 ## Design and Dependencies
 
 - Packages used
-- How i structured the code
+- How I structured the code
 - Seperating out packages
 - Talk about words file
 - Black used for formatting
