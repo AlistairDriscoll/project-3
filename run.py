@@ -29,9 +29,9 @@ Then press Enter!
     while menu_choice not in ["1", "2", "3"]:
         os.system("clear")
         print(
-            """Incorrect choice!
+            f"""{Fore.YELLOW}Incorrect choice!
 
-Please press:
+{Fore.WHITE}Please press:
 
 1 - to look at the rules
 2 - to start the game
@@ -67,8 +67,8 @@ If you guess the full word before you run out of guesses, you win!
     go_to_menu = input("Press b to go back to the menu page...\n")
     while go_to_menu.upper() != "B":
         print(
-            """
-Incorrect input, please select b to go back to the menu.
+            f"""{Fore.YELLOW}
+Incorrect input, please select b to go back to the menu.{Fore.WHITE}
 """
         )
         go_to_menu = input("Select here...\n")
@@ -289,9 +289,9 @@ def main():
         menu_choice = menu_page()
 
     print(
-        """You chose to exit!
+        f"""{Fore.GREEN}You chose to exit!
 
-Thank you for playing hangman! See you next time!
+Thank you for playing hangman! See you next time!{Fore.WHITE}
 """
     )
 
