@@ -381,6 +381,18 @@ mistake of getting it wrong, both error messages would show up instead of one.
 I added a further if statement within the while loop at the top of the 
 choose_letter function to solve this, improving the user experience.
 
+The final bug was the terminal printing the affirming message twice if a letter
+was in the word twice, due to an indentation error that is now fixed.
+
+![Bug Problem](documentation/bugs/bug-1.png)
+
+![Bug Problem Code](documentation/bugs/bug-2.png)
+
+It will now only print the affirming message once it has fully gone through the
+for loop.
+
+![Bug Problem Solve](documentation/bugs/bug-3.png)
+
 ## Credits
 
 I have to thank several YouTube tutorials for helping me learn Colorama, and
