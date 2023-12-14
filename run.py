@@ -103,9 +103,9 @@ Then press Enter!
     while difficulty_choice not in ["1", "2", "3"]:
         os.system("clear")
         print(
-            f"""Incorrect choice!
+            f"""{Fore.YELLOW}Incorrect choice!
 
-Select either:
+{Fore.WHITE}Select either:
 
 {Fore.GREEN}1 for easy difficulty
 {Fore.YELLOW}2 for intermediate or
