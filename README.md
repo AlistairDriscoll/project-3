@@ -359,8 +359,24 @@ it got called the code would just come to an end as it had all ran. I knew I
 wanted to keep the idea of the user pressing 1 to go to the rules and 2 for the
 actual game, and I already had the rules function that worked so didn't see
 the point in trying something from scratch as from experience I'm
-beginning to learn to keep my code and try find a solution. My idea was quite
-a happy accident as it means my code would not be in an infinite loop either.
-I chose to have an option 3 which doesn't actually do anything in the while
-loop of the main function, instead this option would skip the code and finish
-off the main function. I then thought to add a goodbye message.
+beginning to learn to keep my code and try and find a solution. My idea was
+quite a happy accident as it meant my code would not be in an infinite loop
+either. I chose to have an option 3 which doesn't actually do anything in the
+while loop of the main function, instead, this option would skip the code and
+finish off the main function. I then thought to add a goodbye message. This bug
+took a lot of staring at the screen trying to figure something out,
+experimenting and thinking about while going on a walk before I managed to
+think outside the box for a solution.
+
+Another bug was when the user made a mistake, it may have been a 'yellow' kind
+where they only picked a letter they had already chosen or had made a 'red'
+mistake of getting it wrong, both error messages would show up instead of one.
+I added a further if statement within the while loop at the top of the 
+choose_letter function to solve this, much improving the user experience.
+
+## Credits
+
+I have to thank several YouTube tutorials for helping me learn Colorama, and
+I also have to thank my Code Institute mentor Julia for pushing me to learn
+stuff that is out of the course content and driving me to be a better and more
+detailed coder.
