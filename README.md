@@ -210,12 +210,157 @@ website, install it then type this line of code into your terminal:
 
 pip install colorama
 
-## Design and Dependencies
+## Technologies Used
+
+### Main Technologies:
+
+- Heroku as mentioned before was used for the deployment of the app.
+
+- GitHub was used to store the project online and to send the code to Heroku.
+
+- Visual Studio Code was used to type the project out,
+test it and push the code to github.
+
+- Python 3 was used for the main run.py file and to utilize all the other
+technology in the project.
+
+### Technology/Libraries Imported:
+
+- Colorama was used to change the color of the text when needed.
+
+- os was used to clear the terminal of previous messages and displays
+
+- Random was used to be able to generate a random word out of the three lists
+in the word file.
+
+### Other Technologies:
+
+- The Black Formatter extension was used for the formatting throughout the
+Python files.
+
+## Design:
+
+There are eight functions in total, all written before the main function and
+before any code to call them is written, meaning the computer will read through
+all functions before any other code is written. Every other function stems
+from the main function, which serves to call the main functions involved with
+the game depending on what options the user chooses.
+The imports are at the top of the file.
+
+![Structure of the Code](documentation/design/overall-structure.png)
 
 
+When the code starts running the main file is called. The first thing it does
+is call the menu function. The while loop underneath then converts the users
+input into an integer and skips the code within if the option is 3. The if
+statement then executes based on if the input is either 1 or 2. Once the if
+statement code has been executed the code asks again to run the menu_page
+function, which ensures the main function and therefore the entire app will
+keep running for as long as the user wishes.
 
-- Packages used
-- How I structured the code
-- Separating packages
-- Talk about words file
-- Black used for formatting
+![The Main Function](documentation/design/main-function.png)
+
+
+Once the menu function is called it has a while loop that makes sure
+the user selects an option that is valid to keep the code running. Once it has
+either 1, 2, or 3 from the user it will return what their choice was for the
+main to convert to an integer in order to assess what to do with the input.
+Everything is included in the screenshot below bar the comment which I couldn't
+quite fit in the comment and I felt was redundant anyway as I am explaining how
+the code works anyway in this section.
+
+![The Menu Function](documentation/design/menu-function.png)
+
+
+The rules function is also a simple one, it displays a message explaining the
+rules of the game and asks the user to input the letter b to go back to the
+menu page. The while loop converts the input to a capital meaning the input
+choice will not be case-sensitive, making the app even easier to use. All
+single-letter inputs have code on them in order for case sensitivity to not be
+a problem.
+
+![The Rules Page](documentation/design/rules-function.png)
+
+
+The game function is the main bread and butter of the app and the only
+function apart from the main function to also call other functions. I thought
+to put these smaller tasks as functions even though I could have maybe just had
+a game section with loads of code but I felt it was a good idea to take small
+tasks, complete them then get them out of the way, making the code look more
+organized and easy to look at. I declared all the variables the function
+would be using underneath the comments at the top as it would mean they would
+start again off with the right values every time the game function is called.
+
+![Top of Game Page](documentation/design/top-of-game-page-and-functions.png)
+
+### Variables of the game function:
+
+- The which_word function asks the user which difficulty they would like to play
+the game on then picks a random word as the round_word from one of the three 
+words.py files depending on what the user has picked.
+
+- It then returns this word along with the mode the user chose to be used for 
+the display message that follows.
+
+- The chosen_letters list is the list of all the letters the user has guessed,
+including both in the word and not in the word. Used so if a user accidentally
+inputs something they have already chosen they will not lose another life for
+it.
+
+- The char_list is the list of the letters of the round_word both guessed and
+unguessed, so it always starts with a hyphen per letter until the list items
+get replaced with correctly guessed letters.
+
+- The char_list had to be used as one cannot seem to tamper with the individual
+letters of a string so the word_string is then made from this list by way of
+the word_string_func that appends each character of the list into one string.
+
+#### Top and bottom parts of the which_word function:
+
+![Which Word Top Part](documentation/design/which-word-top.png)
+
+![Which Word Bottom Part](documentation/design/which-word-bottom.png)
+
+Code that displays the first game message and the start of the loop for while
+there are more than 0 lives and still hyphens in the char_list, as this means
+the game must keep prompting the user to input more letters:
+
+![Middle of Game Page](documentation/design/game-page-middle.png)
+
+Then here the loop calls the function that asks for another letter, with
+validation in that function, and checks to see if it is in the round_word. It
+then displays the relevant message.
+
+![Letter Choosing Section](documentation/design/game-function-letter-part.png)
+
+The choose_letter function:
+
+![Choose Letter Code](documentation/design/choose-letter-function.png)
+
+The while loop is finally ended if either there are no lives left or if there
+are no hyphens left in the char_list. The program then runs a program to find
+out which is true in order to display the right message.
+
+![Final Game Function Part](documentation/design/which-word-bottom.png)
+
+After the game function has finished running, the return home function is
+called, which requests the user to press h to go back to the home page.
+Validation is in place so they can only choose that option and the user will
+return to the main menu. The code can loop again if the user would like another
+look at the rules or another game or they can choose to exit now also.
+
+## Bugs
+
+The bug that took the most time to solve was trying to be able to get the code
+to repeat the game and rules functions as much as required. At first, I would
+call the menu function before and after the rules function to make sure the
+user could go back to the menu when they wanted to, but after the second time
+it got called the code would just come to an end as it had all ran. I knew I
+wanted to keep the idea of the user pressing 1 to go to the rules and 2 for the
+actual game, and I already had the rules function that worked so didn't see
+the point in trying something from scratch as from experience I'm
+beginning to learn to keep my code and try find a solution. My idea was quite
+a happy accident as it means my code would not be in an infinite loop either.
+I chose to have an option 3 which doesn't actually do anything in the while
+loop of the main function, instead this option would skip the code and finish
+off the main function. I then thought to add a goodbye message.
