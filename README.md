@@ -366,13 +366,16 @@ while loop of the main function, instead, this option would skip the code and
 finish off the main function. I then thought to add a goodbye message. This bug
 took a lot of staring at the screen trying to figure something out,
 experimenting and thinking about while going on a walk before I managed to
-think outside the box for a solution.
+think outside the box for a solution. The bugs in this project and solutions
+ended up changing the flow char that is further up in this file slightly by
+adding new windows but I am still satisfied and think it's an improvement.
+
 
 Another bug was when the user made a mistake, it may have been a 'yellow' kind
 where they only picked a letter they had already chosen or had made a 'red'
 mistake of getting it wrong, both error messages would show up instead of one.
 I added a further if statement within the while loop at the top of the 
-choose_letter function to solve this, much improving the user experience.
+choose_letter function to solve this, improving the user experience.
 
 ## Credits
 
