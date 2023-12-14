@@ -349,6 +349,10 @@ Validation is in place so they can only choose that option and the user will
 return to the main menu. The code can loop again if the user would like another
 look at the rules or another game or they can choose to exit now also.
 
+## Testing:
+
+Testing can be found in the testing file with [this link](TESTING.md).
+
 ## Bugs
 
 The bug that took the most time to solve was trying to be able to get the code
