@@ -160,7 +160,7 @@ def choose_letter(chosen_letters, word_string, lives):
                 f"""{Fore.YELLOW}
 Your choice must be in the alphabet and must only be a singular letter!
 
-Your word so far is {word_string}. Lives: {lives}.{Fore.WHITE}
+{Fore.WHITE}Your word so far is {word_string}. Lives: {lives}.
 """
             )
             letter = input("Choose a letter here...\n")
@@ -237,6 +237,7 @@ lives left: {lives}
         chosen_letters.append(letter_choice)
         if letter_choice not in round_word:
             lives -= 1
+            os.system("clear")
             print(
                 f"""{Fore.RED}
 Oh no! {letter_choice} was not in the word! You have {lives} lives left.
@@ -247,8 +248,8 @@ Oh no! {letter_choice} was not in the word! You have {lives} lives left.
                 if round_word[letter] == letter_choice:
                     char_list[letter] = letter_choice
                     word_string = word_string_func(char_list)
-                    print(
-                        f"""{Fore.GREEN}
+            print(
+                f"""{Fore.GREEN}
 Well done! {letter_choice} was in the word! Your word is now {word_string}.
 Lives left: {lives}. Keep it up!{Fore.WHITE}
 """
